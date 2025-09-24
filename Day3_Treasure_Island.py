@@ -22,5 +22,7 @@ if choice1 == "left":
             print("Bruh, what?. Game Over.")
     else:
         print("You get attacked by an angry trout. Game Over.")
-else:
+elif choice1 == "right":
     print("You get beaten up by a Leprechaun. Game Over.")
+else:
+    print("Bruh, what?. Game Over.")
