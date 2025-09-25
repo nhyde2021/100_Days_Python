@@ -5,10 +5,16 @@ numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 all_characters = [letters, numbers, symbols]
 
-print("Welcome to the PyPassword Generator!")
-nr_letters= int(input("How many letters would you like in your password?\n"))
-nr_symbols = int(input(f"How many symbols would you like?\n"))
-nr_numbers = int(input(f"How many numbers would you like?\n"))
+while True:
+    nr_letters = int(input("How many letters would you like in your password?\n"))
+    nr_symbols = int(input("How many symbols would you like?\n"))
+    nr_numbers = int(input("How many numbers would you like?\n"))
+
+    if nr_letters == 0 and nr_symbols == 0 and nr_numbers == 0:
+        print("⚠️ You must choose at least one character type. Please try again.\n")
+    else:
+        break
+
 
 password = ""
 password_length = nr_letters + nr_symbols + nr_numbers
