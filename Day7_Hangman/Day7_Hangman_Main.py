@@ -27,7 +27,7 @@ while not game_over:
     print(f"****************************{lives}/6 LIVES LEFT****************************")
     guess = input("Guess a letter: ").lower()
     if guess not in valid_letters or len(guess) != 1:
-        print("Please enter a valid letter")
+        print("Please enter a single valid letter")
         continue
 
     # TODO-4: - If the user has entered a letter they've already guessed, print the letter and let them know.
