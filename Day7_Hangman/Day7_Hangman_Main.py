@@ -18,6 +18,7 @@ print("Word to guess: " + placeholder)
 
 game_over = False
 correct_letters = []
+incorrect_letters = []
 
 while not game_over:
 
@@ -26,7 +27,7 @@ while not game_over:
     guess = input("Guess a letter: ").lower()
 
     # TODO-4: - If the user has entered a letter they've already guessed, print the letter and let them know.
-    if guess in correct_letters:
+    if guess in correct_letters or guess in incorrect_letters:
         print(f"{guess} has already been guessed try again.")
     display = ""
 
@@ -44,8 +45,9 @@ while not game_over:
     # TODO-5: - If the letter is not in the chosen_word, print out the letter and let them know it's not in the word.
     #  e.g. You guessed d, that's not in the word. You lose a life.
 
-    if guess not in chosen_word:
+    if guess not in chosen_word and guess not in incorrect_letters:
         lives -= 1
+        incorrect_letters.append(guess)
         print(f"{guess} is not in the word, lose a life.")
 
         if lives == 0:
