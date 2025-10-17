@@ -69,5 +69,5 @@ def play_blackjack():
 print(art.logo)
 play_blackjack()
 
-#TODO: Add functionality for Aces being 1 or 11 based on hand total
+
 
