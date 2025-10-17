@@ -32,6 +32,9 @@ def play_blackjack():
         if hit_stay == "hit":
             hit(player_hand)
             print(f"\n**********You were dealt a {player_hand[-1]}**********\n")
+            if sum(player_hand) > 21 and 11 in player_hand:
+                ace_index = indexOf(player_hand, 11)
+                player_hand[ace_index] = 1
         elif hit_stay == "stay":
             break
         else:
@@ -43,6 +46,9 @@ def play_blackjack():
         while sum(dealer_hand) < 17:
             hit(dealer_hand)
             print(f"**********Dealer was dealt a {dealer_hand[-1]}**********")
+            if sum(dealer_hand) > 21 and 11 in dealer_hand:
+                ace_index = indexOf(dealer_hand, 11)
+                dealer_hand[ace_index] = 1
 
 
         if sum(dealer_hand) > 21:
