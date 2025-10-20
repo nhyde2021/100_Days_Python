@@ -1,7 +1,6 @@
 import random
 import sys
 from operator import indexOf
-
 import art
 
 cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
@@ -15,11 +14,9 @@ def hit(hand):
     hand.append(random.choice(cards))
 
 def play_blackjack():
-
     player_hand = []
     dealer_hand = []
     initial_deal(player_hand, dealer_hand)
-
 
     if sum(player_hand) > 21:
         player_hand[-1] = 1
@@ -50,7 +47,6 @@ def play_blackjack():
                 ace_index = indexOf(dealer_hand, 11)
                 dealer_hand[ace_index] = 1
 
-
         if sum(dealer_hand) > 21:
             print(f"{sum(player_hand)} vs. {sum(dealer_hand)} Dealer busts, You Win!!")
         elif sum(player_hand) > sum(dealer_hand):
@@ -66,8 +62,6 @@ def play_blackjack():
         sys.exit()
     elif another_game == "y":
         play_blackjack()
+
 print(art.logo)
 play_blackjack()
-
-
-
