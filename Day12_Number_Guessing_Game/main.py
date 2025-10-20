@@ -27,7 +27,7 @@ def difficulty():
                 choice = input("Bruh. Quit playin'. 'easy' or 'hard': ")
                 invalid_count += 1
             else:
-                print("THAT'S IT! You had you're chance. I'm out.")
+                print("THAT'S IT!! You had you're chance. I'm out.")
                 sys.exit()
 
     return attempt_count
