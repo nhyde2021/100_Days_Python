@@ -33,10 +33,10 @@ def difficulty():
     return attempt_count
 
 def guessed_num():
-    input_num = int(input("Make a guess: "))
-    if input_num not in range(1, 100):
-        print("Guess must be between 1 and 100.")
-        guessed_num()
+    input_num = input("Make a guess: ")
+    while not input_num.isdigit() or int(input_num) not in range(1, 101):
+        input_num = input("Guess must be an integer between 1 and 100. Try again: ")
+        
     return int(input_num)
 
 def play_game():
