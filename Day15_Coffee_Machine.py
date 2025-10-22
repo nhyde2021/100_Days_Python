@@ -29,11 +29,14 @@ resources = {
     "milk": 200,
     "coffee": 100,
 }
+
 def order_coffee():
+    """Prompt user for their coffee choice."""
     selection = input("What would you like? (espresso/latte/cappuccino): ").lower()
     return selection
 
 def check_resources(order):
+    """Check if there are enough resources to make the ordered coffee."""
     insufficiencies = 0
     available = True
     for key in order['ingredients']:
@@ -44,12 +47,9 @@ def check_resources(order):
         available = False
         return available
     return available
-def make_coffee(order):
-    for key in order['ingredients']:
-        resources[key] -= order['ingredients'][key]
-    print("Here is your coffee. Enjoy!")
 
 def collect_payment(order):
+    """Collect coins from user and check if enough money was inserted."""
     global money
     print(f"It's gonna be ${order['cost']}, Please insert coins.")
     quarters = input("How many quarters? ")
@@ -73,6 +73,12 @@ def collect_payment(order):
         else:
             print("Exact change, nice!")
     return enough
+
+def make_coffee(order):
+    """Deduct the required ingredients from the resources."""
+    for key in order['ingredients']:
+        resources[key] -= order['ingredients'][key]
+    print("Here is your coffee. Enjoy!")
 
 money = 0
 machine_on = True
