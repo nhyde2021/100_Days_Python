@@ -55,14 +55,6 @@ def score_add(result, points):
         points += 1
     return points
 
-def outcome(comparison):
-    win_lose = True
-    if comparison:
-        return  win_lose
-    else:
-        win_lose = False
-        return win_lose
-
 def play_game():
     score_total = 0
     game_over = False
@@ -77,15 +69,14 @@ def play_game():
 
         user_selection = submit_guess(choice_a, choice_b)
         compare_result = compare(user_selection, choice_a, choice_b)
-        outcome_result = outcome(compare_result)
-        score_total = score_add(outcome_result, score_total)
+        score_total = score_add(compare_result, score_total)
 
-        if outcome_result:
+        if compare_result:
             choice_a = choice_b
             choice_b = pull_data()
-            gameplay_display(outcome_result, choice_a, choice_b, score_total)
+            gameplay_display(compare_result, choice_a, choice_b, score_total)
         else:
-            gameplay_display(outcome_result, choice_a, choice_b, score_total)
+            gameplay_display(compare_result, choice_a, choice_b, score_total)
             play_again = input("Would you like to play again? y/n: ")
             if play_again == "y":
                 play_game()
