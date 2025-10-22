@@ -29,47 +29,70 @@ resources = {
     "milk": 200,
     "coffee": 100,
 }
+def order_coffee():
+    selection = input("What would you like? (espresso/latte/cappuccino): ").lower()
+    return selection
+
+def check_resources(order):
+    insufficiencies = 0
+    available = True
+    for key in order['ingredients']:
+        if order['ingredients'][key] > resources[key]:
+            print(f"Insufficient {key}.")
+            insufficiencies += 1
+    if insufficiencies > 0:
+        available = False
+        return available
+    return available
+def make_coffee(order):
+    for key in order['ingredients']:
+        resources[key] -= order['ingredients'][key]
+    print("Here is your coffee. Enjoy!")
+
+def collect_payment(order):
+    global money
+    print(f"It's gonna be ${order['cost']}, Please insert coins.")
+    quarters = input("How many quarters? ")
+    dimes = input("How many dimes? ")
+    nickels = input("How many nickels? ")
+    pennies = input("How many pennies? ")
+    money_inserted = 0
+    enough = True
+
+    money_inserted += float(quarters) * 0.25 + float(dimes) * 0.1 + float(nickels) * 0.05 + float(pennies) * .01
+    change = round(money_inserted - order['cost'], 2)
+
+    if money_inserted < order['cost']:
+        print("Insufficient funds. Refund issued.")
+        enough = False
+        return enough
+    else:
+        money += order['cost']
+        if change > 0:
+            print(f"Here is ${change} in change.")
+        else:
+            print("Exact change, nice!")
+    return enough
 
 money = 0
 machine_on = True
 
 while machine_on:
-    user_selection = input("What would you like? (espresso/latte/cappuccino): ")
-    if user_selection == "off":
+    
+    
+    drink = order_coffee()
+
+    if drink == "off":
         machine_on = False
-    elif user_selection == "report":
+    elif drink == "report":
         print(f"water: {resources['water']}\nmilk: {resources['milk']}\ncoffee: {resources['coffee']}\nmoney: ${money}")
-    elif user_selection in MENU.keys():
-        user_selection = MENU[user_selection]
-        insufficiencies = 0
+    elif drink in MENU.keys():
+        drink = MENU[drink]
+        is_enough_resources = check_resources(drink)
+        if is_enough_resources:
+            is_enough_money = collect_payment(drink)
+            if is_enough_money:
+                make_coffee(drink)
 
-        for key in user_selection['ingredients']:
-            if user_selection['ingredients'][key] > resources[key]:
-                print(f"Insufficient {key}.")
-                insufficiencies += 1
-            else:
-                if insufficiencies == 0:
-                    resources[key] -= user_selection['ingredients'][key]
-        if insufficiencies > 0:
-            continue
-
-        quarters = input("How many quarters? ")
-        dimes = input("How many dimes? ")
-        nickels = input("How many nickels? ")
-        pennies = input("How many pennies? ")
-        money_inserted = 0
-
-        money_inserted += float(quarters) * 0.25 + float(dimes) * 0.1 + float(nickels) * 0.05 + float(pennies) * .01
-        change = round(money_inserted - user_selection['cost'], 2)
-        money += money_inserted
-
-        if money_inserted < user_selection['cost']:
-            print("Insufficient funds. Refund issued.")
-            money -= money_inserted
-            for key in user_selection['ingredients']:
-                resources[key] += user_selection['ingredients'][key]
-        else:
-            money -= change
-            print(f"Here's your change: ${change}\nEnjoy your coffee!")
     else:
-        print("Invalid input. Check your spelling and try again.")
+        print("Invalid selection. Please choose again.")
