@@ -39,16 +39,10 @@ def submit_guess(a, b):
     return user_choice
 
 def compare(user, a, b):
-    if user == a:
-        if a['follower_count'] > b['follower_count']:
-            return True
-        else:
-            return False
+    if a['follower_count'] > b['follower_count']:
+            return user == a
     else:
-        if b['follower_count'] > a['follower_count']:
-            return True
-        else:
-            return False
+        return user == b
 
 def score_add(result, points):
     if result:
