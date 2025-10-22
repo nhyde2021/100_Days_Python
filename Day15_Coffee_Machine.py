@@ -85,7 +85,6 @@ machine_on = True
 
 while machine_on:
     
-    
     drink = order_coffee()
 
     if drink == "off":
