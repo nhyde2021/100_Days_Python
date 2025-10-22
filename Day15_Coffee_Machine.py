@@ -100,4 +100,4 @@ while machine_on:
                 make_coffee(drink)
 
     else:
-        print("Invalid selection. Please choose again.")
+        print("Invalid selection. Check you spelling and choose again.")
