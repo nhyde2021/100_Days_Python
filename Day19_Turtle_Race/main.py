@@ -1,12 +1,6 @@
 from turtle import Turtle, Screen
 import random
 
-screen = Screen()
-screen.title("The Tortuga Derby")
-screen.setup(width=600, height=400)
-user_bet = screen.textinput(title="Make your bet", prompt="Which turtle will win the race? Enter a color: ")
-is_race_on = False
-
 def print_result(string):
     result_turtle = Turtle(shape="turtle")
     result_turtle.up()
@@ -14,17 +8,26 @@ def print_result(string):
     result_turtle.setheading(270)
     result_turtle.write(string, True, align="center", font=("arial", 12, "normal"))
 
-starting_turtle = Turtle(shape="turtle")
-starting_turtle.up()
-starting_turtle.goto(230,270)
-starting_turtle.down()
-starting_turtle.setheading(270)
-starting_turtle.forward(500)
+def draw_finish_line():
+    starting_turtle = Turtle(shape="turtle")
+    starting_turtle.up()
+    starting_turtle.goto(230,270)
+    starting_turtle.down()
+    starting_turtle.setheading(270)
+    starting_turtle.forward(500)
+    
+screen = Screen()
+screen.title("The Tortuga Derby")
+screen.setup(width=600, height=400)
+user_bet = screen.textinput(title="Make your bet", prompt="Which turtle will win the race? Enter a color: ")
+is_race_on = False
 
 
 colors = ["red", "orange", "yellow", "green", "blue", "purple"]
 y_positions = [-170, -100, -30, 40, 110, 180]
 all_turtle = []
+
+draw_finish_line()
 
 for turtle_index in range(0, 6):
     doug = Turtle(shape="turtle")
