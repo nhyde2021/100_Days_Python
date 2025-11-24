@@ -27,19 +27,9 @@ while len(guessed_states) < 50:
         write_state.goto(x, y)
         write_state.write(answer_state, align="center", font=("Arial", 10, "normal"))
 
-states_to_learn = []
-
-for state in state_names:
-    if state not in guessed_states:
-        states_to_learn.append(state)
+states_to_learn = [state for state in state_names if state not in guessed_states]
 
 stl = pandas.DataFrame(states_to_learn)
 stl.to_csv("states_to_learn.csv")
-
-
-
-
-
-
 
 turtle.mainloop()
