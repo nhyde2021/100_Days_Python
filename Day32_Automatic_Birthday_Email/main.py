@@ -22,7 +22,6 @@ if today in birthday_dict:
     with open(letter_selection) as file:
         file_data = file.read()
         file_data = file_data.replace("[NAME]", birthday_person['name'])
-        print(file_data)
 
     with smtplib.SMTP("smtp.mail.yahoo.com") as connection:
         connection.starttls()
