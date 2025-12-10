@@ -3,8 +3,8 @@ import pandas
 import random
 import smtplib
 
-MY_EMAIL = "jr.cineby@yahoo.com"
-MY_PASSWORD = "tbd"
+MY_EMAIL = "neil.hyde17@gmail.com"
+MY_PASSWORD = "hikvkduiocixfwxl"
 
 def choose_letter():
     random_num = random.randint(1,3)
@@ -23,7 +23,7 @@ if today in birthday_dict:
         file_data = file.read()
         file_data = file_data.replace("[NAME]", birthday_person['name'])
 
-    with smtplib.SMTP("smtp.mail.yahoo.com") as connection:
+    with smtplib.SMTP("smtp.gmail.com") as connection:
         connection.starttls()
         connection.login(MY_EMAIL, MY_PASSWORD)
         connection.sendmail(
