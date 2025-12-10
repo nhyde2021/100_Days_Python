@@ -1,14 +1,15 @@
 import requests
 import smtplib
+import os
 
 
 
-API_KEY = "24139b4aa701f6a28f02229e60ec680d"
+API_KEY = os.environ.get("API_KEY")
 MY_LAT = "38.365012"
 MY_LON = "-82.456523"
 
 MY_EMAIL = "neil.hyde17@gmail.com"
-MY_PASSWORD = "qjsxsneuwleyqzko"
+MY_PASSWORD = os.environ.get("PASSWORD")
 
 parameters = {
     "lat": MY_LAT,
