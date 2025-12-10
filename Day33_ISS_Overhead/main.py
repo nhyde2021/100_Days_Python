@@ -5,8 +5,8 @@ import time
 
 MY_LAT = 38.594106 # Your latitude
 MY_LONG = -90.332781 # Your longitude
-MY_EMAIL = "jr.cineby@yahoo.com"
-MY_PASSWORD = "tbd"
+MY_EMAIL = "neil.hyde17@gmail.com"
+MY_PASSWORD = "whjtpccmlllctpfl"
 
 def iss_overhead():
     # Your position is within +5 or -5 degrees of the ISS position.
@@ -43,11 +43,11 @@ def is_night():
 while True:
     time.sleep(60)
     if iss_overhead() and is_night():
-        with smtplib.SMTP("smtp.mail.yahoo.com") as connection:
+        with smtplib.SMTP("smtp.gmail.com") as connection:
             connection.starttls()
             connection.login(MY_EMAIL, MY_PASSWORD)
             connection.sendmail(
                 from_addr=MY_EMAIL,
-                to_addrs="smtp.test.nch@yahoo.com",
+                to_addrs="smtp_test_nch@yahoo.com",
                 msg="Subject:Look Up!\n\nThe ISS is above you!"
             )
